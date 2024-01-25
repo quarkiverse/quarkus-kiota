@@ -230,6 +230,9 @@
           <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
       </distributionManagement>
+      <properties>
+        <spotless.check.skip>true</spotless.check.skip>
+      </properties>
       <build>
         <plugins>
           <plugin>
