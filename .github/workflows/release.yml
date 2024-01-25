@@ -54,7 +54,7 @@ jobs:
 
       - name: Update latest release version in docs
         run: |
-          mvn -B -ntp -pl docs -am generate-resources -Denforcer.skip -Dformatter.skip -Dimpsort.skip
+          mvn -B -ntp -pl docs -am generate-resources -Denforcer.skip -Dspotless.check.skip=true
           if ! git diff --quiet docs/modules/ROOT/templates/includes/attributes.adoc; then
             git add docs/modules/ROOT/templates/includes/attributes.adoc
             git commit -m "Update the latest release version ${{steps.metadata.outputs.current-version}} in documentation"
@@ -62,8 +62,9 @@ jobs:
 
       - name: Maven release ${{steps.metadata.outputs.current-version}}
         run: |
-          mvn -B release:prepare -Prelease -DreleaseVersion=${{steps.metadata.outputs.current-version}} -DdevelopmentVersion=${{steps.metadata.outputs.next-version}}
-          mvn -B release:perform -Darguments=-DperformRelease -DperformRelease -Prelease
+          mvn -B release:prepare -Prelease -DreleaseVersion=${{steps.metadata.outputs.current-version}} -DdevelopmentVersion=${{steps.metadata.outputs.next-version}} -Dspotless.check.skip=true
+          mvn -B release:perform -Darguments=-DperformRelease -DperformRelease -Prelease -Dspotless.check.skip=true
+          mvn -B spotless:apply
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
