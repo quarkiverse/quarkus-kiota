@@ -9,7 +9,7 @@
 
   <groupId>io.quarkiverse.kiota</groupId>
   <artifactId>quarkus-kiota-parent</artifactId>
-  <version>999-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>pom</packaging>
 
   <name>Quarkus Kiota Extension</name>
@@ -42,6 +42,7 @@
     <connection>scm:git:git@github.com:quarkiverse/quarkus-kiota.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-kiota.git</developerConnection>
     <url>https://github.com/quarkiverse/quarkus-kiota</url>
+    <tag>0.0.2</tag>
   </scm>
 
   <distributionManagement>
@@ -153,8 +154,8 @@
                 <include>*.md</include>
                 <include>.gitignore</include>
               </includes>
-              <trimTrailingWhitespace></trimTrailingWhitespace>
-              <endWithNewline></endWithNewline>
+              <trimTrailingWhitespace />
+              <endWithNewline />
               <indent>
                 <spaces>true</spaces>
                 <spacesPerTab>2</spacesPerTab>
@@ -172,14 +173,14 @@
               <reflowLongStrings>true</reflowLongStrings>
               <formatJavadoc>false</formatJavadoc>
             </googleJavaFormat>
-            <importOrder></importOrder>
-            <removeUnusedImports></removeUnusedImports>
+            <importOrder />
+            <removeUnusedImports />
           </java>
           <pom>
             <includes>
               <include>**/pom.xml</include>
             </includes>
-            <sortPom></sortPom>
+            <sortPom />
           </pom>
         </configuration>
         <executions>
