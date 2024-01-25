@@ -32,8 +32,10 @@ import org.eclipse.microprofile.config.Config;
 
 /**
  * Code generation for Kiota. Generates java classes from OpenAPI files placed in either src/main/openapi or src/test/openapi
- * Implementation inspired by: https://github.com/quarkusio/quarkus/blob/f0841e02edbc2a1c1fc5b18c8b6cfecadff42a51/extensions/grpc/codegen/src/main/java/io/quarkus/grpc/deployment/GrpcCodeGen.java
- * Kiota does implement a Json RPC protocol, eventually we can use it as a long-running process: https://github.com/microsoft/kiota/blob/main/vscode/microsoft-kiota/src/kiotaInterop.ts
+ * Implementation inspired by:
+ * https://github.com/quarkusio/quarkus/blob/f0841e02edbc2a1c1fc5b18c8b6cfecadff42a51/extensions/grpc/codegen/src/main/java/io/quarkus/grpc/deployment/GrpcCodeGen.java
+ * Kiota does implement a Json RPC protocol, eventually we can use it as a long-running process:
+ * https://github.com/microsoft/kiota/blob/main/vscode/microsoft-kiota/src/kiotaInterop.ts
  */
 public abstract class KiotaCodeGen implements CodeGenProvider {
 
