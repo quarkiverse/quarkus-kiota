@@ -53,6 +53,11 @@
                   <include>quarkus-kiota.adoc</include>
                   <filtering>false</filtering>
                 </resource>
+                <resource>
+                  <directory>${project.basedir}/templates/includes</directory>
+                  <include>attributes.adoc</include>
+                  <filtering>true</filtering>
+                </resource>
               </resources>
             </configuration>
           </execution>
