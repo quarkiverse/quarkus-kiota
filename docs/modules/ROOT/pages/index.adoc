@@ -1,6 +1,8 @@
 = Quarkus - Kiota
 :extension-status: preview
 
+include::./includes/attributes.adoc[]
+
 Quarkus' extension for generation of fully typed, client side SDKs based on OpenAPI specification files.
 
 This extension is based on the https://learn.microsoft.com/en-gb/openapi/kiota/[Microsoft Kiota] generator.
