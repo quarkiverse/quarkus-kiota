@@ -64,7 +64,7 @@
     <quarkus.version>3.6.5</quarkus.version>
     <kiota.libs.version>0.12.1</kiota.libs.version>
     <kiota-extra.libs.version>0.0.13</kiota-extra.libs.version>
-    <spotless.version>2.41.1</spotless.version>
+    <spotless.version>2.43.0</spotless.version>
   </properties>
   <dependencyManagement>
     <dependencies>
