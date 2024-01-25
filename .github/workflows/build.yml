@@ -1,0 +1,65 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - '.gitignore'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - '*.md'
+      - '*.adoc'
+      - '*.txt'
+      - '.all-contributorsrc'
+  pull_request:
+    paths-ignore:
+      - '.gitignore'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - '*.md'
+      - '*.adoc'
+      - '*.txt'
+      - '.all-contributorsrc'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+        java-version: [11, 17]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Prepare git
+        run: git config --global core.autocrlf false
+        if: startsWith(matrix.os, 'windows')
+
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java-version }}
+          cache: 'maven'
+
+      - name: Setup docker (missing on MacOS)
+        if: runner.os == 'macos'
+        run: |
+          brew install docker
+          colima start
+          # For Quarkus to find the Colima socket
+          # https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#cannot-connect-to-the-docker-daemon-at-unixvarrundockersock-is-the-docker-daemon-running
+          sudo ln -sf $HOME/.colima/default/docker.sock /var/run/docker.sock
+
+      - name: Build with Maven
+        run: mvn -B clean install
