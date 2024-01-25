@@ -34,8 +34,9 @@
   </developers>
 
   <scm>
-    <connection>scm:git@github.com:kiota-community/kiota-java-extra.git</connection>
-    <url>https://github.com/kiota-community/kiota-java-extra.git</url>
+    <connection>scm:git:git@github.com:quarkiverse/quarkus-kiota.git</connection>
+    <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-kiota.git</developerConnection>
+    <url>https://github.com/quarkiverse/quarkus-kiota</url>
   </scm>
 
   <distributionManagement>
