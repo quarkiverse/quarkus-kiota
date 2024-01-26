@@ -41,8 +41,8 @@
   <scm>
     <connection>scm:git:git@github.com:quarkiverse/quarkus-kiota.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-kiota.git</developerConnection>
-    <url>https://github.com/quarkiverse/quarkus-kiota</url>
     <tag>HEAD</tag>
+    <url>https://github.com/quarkiverse/quarkus-kiota</url>
   </scm>
 
   <distributionManagement>
@@ -154,8 +154,8 @@
                 <include>*.md</include>
                 <include>.gitignore</include>
               </includes>
-              <trimTrailingWhitespace />
-              <endWithNewline />
+              <trimTrailingWhitespace></trimTrailingWhitespace>
+              <endWithNewline></endWithNewline>
               <indent>
                 <spaces>true</spaces>
                 <spacesPerTab>2</spacesPerTab>
@@ -173,14 +173,14 @@
               <reflowLongStrings>true</reflowLongStrings>
               <formatJavadoc>false</formatJavadoc>
             </googleJavaFormat>
-            <importOrder />
-            <removeUnusedImports />
+            <importOrder></importOrder>
+            <removeUnusedImports></removeUnusedImports>
           </java>
           <pom>
             <includes>
               <include>**/pom.xml</include>
             </includes>
-            <sortPom />
+            <sortPom></sortPom>
           </pom>
         </configuration>
         <executions>
