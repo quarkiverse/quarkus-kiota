@@ -16,9 +16,6 @@
  */
 package io.kiota.quarkus.it;
 
-import io.apisdk.example.yaml.ApiClient;
-import io.kiota.http.vertx.VertXRequestAdapter;
-import io.vertx.core.Vertx;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -26,11 +23,16 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
+import io.apisdk.example.yaml.ApiClient;
+import io.kiota.http.vertx.VertXRequestAdapter;
+import io.vertx.core.Vertx;
+
 @Path("/quarkus-kiota2")
 @ApplicationScoped
 public class QuarkusKiotaResource2 {
 
-    @Inject private Vertx vertx;
+    @Inject
+    private Vertx vertx;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -39,8 +41,8 @@ public class QuarkusKiotaResource2 {
         adapter.setBaseUrl("http://localhost:8081");
         ApiClient client = new ApiClient(adapter);
 
-        io.apisdk.example.yaml.models.Greeting result =
-                client.quarkusKiota().get(config -> config.queryParameters.name = "myself");
+        io.apisdk.example.yaml.models.Greeting result = client.quarkusKiota()
+                .get(config -> config.queryParameters.name = "myself");
 
         return new Greeting(result.getValue());
     }

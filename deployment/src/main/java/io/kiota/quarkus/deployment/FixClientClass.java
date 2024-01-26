@@ -1,11 +1,12 @@
 package io.kiota.quarkus.deployment;
 
-import com.github.javaparser.ast.expr.NameExpr;
-import com.github.javaparser.ast.stmt.ExpressionStmt;
-import com.github.javaparser.utils.SourceRoot;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
+
+import com.github.javaparser.ast.expr.NameExpr;
+import com.github.javaparser.ast.stmt.ExpressionStmt;
+import com.github.javaparser.utils.SourceRoot;
 
 // This is a workaround until this Issue gets fixed: https://github.com/microsoft/kiota/issues/3796
 public class FixClientClass {
@@ -50,14 +51,14 @@ public class FixClientClass {
                         new ExpressionStmt(
                                 new NameExpr(
                                         "SerializationWriterFactoryRegistry.defaultInstance.contentTypeAssociatedFactories.put(jsonSerializationWriterFactory.getValidContentType(),"
-                                            + "  jsonSerializationWriterFactory)")));
+                                                + "  jsonSerializationWriterFactory)")));
             } else if (stmt.toString().contains("JsonParseNodeFactory")) {
                 constructorBody.setStatement(
                         i,
                         new ExpressionStmt(
                                 new NameExpr(
                                         "ParseNodeFactoryRegistry.defaultInstance.contentTypeAssociatedFactories.put(jsonParseNodeFactory.getValidContentType(),"
-                                            + " jsonParseNodeFactory)")));
+                                                + " jsonParseNodeFactory)")));
             }
         }
 
@@ -67,13 +68,13 @@ public class FixClientClass {
                 new ExpressionStmt(
                         new NameExpr(
                                 "JsonSerializationWriterFactory jsonSerializationWriterFactory ="
-                                    + " Arc.container().instance(JsonSerializationWriterFactory.class).get()")));
+                                        + " Arc.container().instance(JsonSerializationWriterFactory.class).get()")));
         constructorBody.addStatement(
                 2,
                 new ExpressionStmt(
                         new NameExpr(
                                 "JsonParseNodeFactory jsonParseNodeFactory ="
-                                    + " Arc.container().instance(JsonParseNodeFactory.class).get()")));
+                                        + " Arc.container().instance(JsonParseNodeFactory.class).get()")));
 
         source.saveAll();
     }

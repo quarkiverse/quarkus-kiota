@@ -1,12 +1,5 @@
 package io.kiota.quarkus;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.quarkus.logging.Log;
-import io.quarkus.runtime.annotations.ConfigGroup;
-import io.quarkus.runtime.annotations.ConfigItem;
-import io.quarkus.runtime.annotations.ConfigPhase;
-import io.quarkus.runtime.annotations.ConfigRoot;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -15,7 +8,17 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
+
 import org.eclipse.microprofile.config.Config;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.quarkus.logging.Log;
+import io.quarkus.runtime.annotations.ConfigGroup;
+import io.quarkus.runtime.annotations.ConfigItem;
+import io.quarkus.runtime.annotations.ConfigPhase;
+import io.quarkus.runtime.annotations.ConfigRoot;
 
 // This configuration is read in codegen phase (before build time), the annotation is for
 // documentation
@@ -46,19 +49,17 @@ public class KiotaCodeGenConfig {
     private static final String CLIENT_PACKAGE_NAME = ".package-name";
     private static final String INCLUDE_PATH = ".include-path";
     private static final String EXCLUDE_PATH = ".exclude-path";
-    private static final List<String> DEFAULT_SERIALIZER =
-            List.of(
-                    "io.kiota.serialization.json.quarkus.JsonSerializationWriterFactory",
-                    "com.microsoft.kiota.serialization.TextSerializationWriterFactory",
-                    "com.microsoft.kiota.serialization.FormSerializationWriterFactory",
-                    "com.microsoft.kiota.serialization.MultipartSerializationWriterFactory");
+    private static final List<String> DEFAULT_SERIALIZER = List.of(
+            "io.kiota.serialization.json.quarkus.JsonSerializationWriterFactory",
+            "com.microsoft.kiota.serialization.TextSerializationWriterFactory",
+            "com.microsoft.kiota.serialization.FormSerializationWriterFactory",
+            "com.microsoft.kiota.serialization.MultipartSerializationWriterFactory");
     private static final String SERIALIZER = ".serializer";
 
-    private static final List<String> DEFAULT_DESERIALIZER =
-            List.of(
-                    "io.kiota.serialization.json.quarkus.JsonParseNodeFactory",
-                    "com.microsoft.kiota.serialization.TextParseNodeFactory",
-                    "com.microsoft.kiota.serialization.FormParseNodeFactory");
+    private static final List<String> DEFAULT_DESERIALIZER = List.of(
+            "io.kiota.serialization.json.quarkus.JsonParseNodeFactory",
+            "com.microsoft.kiota.serialization.TextParseNodeFactory",
+            "com.microsoft.kiota.serialization.FormParseNodeFactory");
     private static final String DESERIALIZER = ".deserializer";
 
     /**
@@ -129,19 +130,17 @@ public class KiotaCodeGenConfig {
             Log.warn("No Kiota version specified, trying to retrieve it from the GitHub API");
             try {
                 URI releaseURI = new URI(getReleaseUrl(config));
-                URI latestVersionURI =
-                        new URI(
-                                releaseURI.getScheme(),
-                                "api." + releaseURI.getHost(),
-                                "/repos" + releaseURI.getPath() + "/latest",
-                                releaseURI.getFragment());
+                URI latestVersionURI = new URI(
+                        releaseURI.getScheme(),
+                        "api." + releaseURI.getHost(),
+                        "/repos" + releaseURI.getPath() + "/latest",
+                        releaseURI.getFragment());
 
                 HttpRequest request = HttpRequest.newBuilder().uri(latestVersionURI).GET().build();
 
-                HttpResponse<String> response =
-                        HttpClient.newBuilder()
-                                .build()
-                                .send(request, HttpResponse.BodyHandlers.ofString());
+                HttpResponse<String> response = HttpClient.newBuilder()
+                        .build()
+                        .send(request, HttpResponse.BodyHandlers.ofString());
 
                 if (response.statusCode() != 200) {
                     Log.warn(
@@ -243,9 +242,8 @@ public class KiotaCodeGenConfig {
     }
 
     public static String getClientClassName(final Config config, String filename) {
-        String clientName =
-                config.getConfigValue(KIOTA_CONFIG_PREFIX + "." + filename + CLIENT_CLASS_NAME)
-                        .getValue();
+        String clientName = config.getConfigValue(KIOTA_CONFIG_PREFIX + "." + filename + CLIENT_CLASS_NAME)
+                .getValue();
         if (clientName != null) {
             return clientName;
         }
@@ -253,9 +251,8 @@ public class KiotaCodeGenConfig {
     }
 
     public static String getClientPackageName(final Config config, String filename) {
-        String packageName =
-                config.getConfigValue(KIOTA_CONFIG_PREFIX + "." + filename + CLIENT_PACKAGE_NAME)
-                        .getValue();
+        String packageName = config.getConfigValue(KIOTA_CONFIG_PREFIX + "." + filename + CLIENT_PACKAGE_NAME)
+                .getValue();
         if (packageName != null) {
             return packageName;
         }
@@ -273,8 +270,7 @@ public class KiotaCodeGenConfig {
     }
 
     public static List<String> getSerializer(final Config config, String filename) {
-        String serializer =
-                config.getConfigValue(KIOTA_CONFIG_PREFIX + "." + filename + SERIALIZER).getValue();
+        String serializer = config.getConfigValue(KIOTA_CONFIG_PREFIX + "." + filename + SERIALIZER).getValue();
         if (serializer != null) {
             return List.of(serializer.split(","));
         }
@@ -282,9 +278,8 @@ public class KiotaCodeGenConfig {
     }
 
     public static List<String> getDeserializer(final Config config, String filename) {
-        String deserializer =
-                config.getConfigValue(KIOTA_CONFIG_PREFIX + "." + filename + DESERIALIZER)
-                        .getValue();
+        String deserializer = config.getConfigValue(KIOTA_CONFIG_PREFIX + "." + filename + DESERIALIZER)
+                .getValue();
         if (deserializer != null) {
             return List.of(deserializer.split(","));
         }

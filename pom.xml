@@ -70,7 +70,6 @@
     <quarkus.version>3.7.0</quarkus.version>
     <kiota.libs.version>0.12.1</kiota.libs.version>
     <kiota-extra.libs.version>0.0.13</kiota-extra.libs.version>
-    <spotless.version>2.43.0</spotless.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -143,72 +142,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>com.diffplug.spotless</groupId>
-        <artifactId>spotless-maven-plugin</artifactId>
-        <version>${spotless.version}</version>
-        <configuration>
-          <formats>
-            <format>
-              <includes>
-                <include>*.md</include>
-                <include>.gitignore</include>
-              </includes>
-              <trimTrailingWhitespace></trimTrailingWhitespace>
-              <endWithNewline></endWithNewline>
-              <indent>
-                <spaces>true</spaces>
-                <spacesPerTab>2</spacesPerTab>
-              </indent>
-            </format>
-          </formats>
-          <java>
-            <includes>
-              <include>**/src/main/java/**/*.java</include>
-              <include>**/src/test/java/**/*.java</include>
-            </includes>
-            <googleJavaFormat>
-              <version>1.18.1</version>
-              <style>AOSP</style>
-              <reflowLongStrings>true</reflowLongStrings>
-              <formatJavadoc>false</formatJavadoc>
-            </googleJavaFormat>
-            <importOrder></importOrder>
-            <removeUnusedImports></removeUnusedImports>
-          </java>
-          <pom>
-            <includes>
-              <include>**/pom.xml</include>
-            </includes>
-            <sortPom></sortPom>
-          </pom>
-        </configuration>
-        <executions>
-          <execution>
-            <id>format</id>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <phase>process-sources</phase>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>net.revelc.code</groupId>
-        <artifactId>impsort-maven-plugin</artifactId>
-        <inherited>false</inherited>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>net.revelc.code.formatter</groupId>
-        <artifactId>formatter-maven-plugin</artifactId>
-        <inherited>false</inherited>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
 
@@ -238,9 +171,6 @@
           <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
       </distributionManagement>
-      <properties>
-        <spotless.check.skip>true</spotless.check.skip>
-      </properties>
       <build>
         <plugins>
           <plugin>

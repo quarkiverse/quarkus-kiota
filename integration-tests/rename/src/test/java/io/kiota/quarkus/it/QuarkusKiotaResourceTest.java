@@ -4,18 +4,21 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import jakarta.inject.Inject;
+
+import org.junit.jupiter.api.Test;
+
 import foo.bar.MyApiClient;
 import foo.bar.models.Greeting;
 import io.kiota.http.vertx.VertXRequestAdapter;
 import io.quarkus.test.junit.QuarkusTest;
 import io.vertx.core.Vertx;
-import jakarta.inject.Inject;
-import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 public class QuarkusKiotaResourceTest {
 
-    @Inject Vertx vertx;
+    @Inject
+    Vertx vertx;
 
     @Test
     public void testHelloEndpoint() {

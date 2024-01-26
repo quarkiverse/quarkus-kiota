@@ -4,11 +4,12 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+
 import io.apisdk.example.yaml.ApiClient;
 import io.apisdk.example.yaml.models.Greeting;
 import io.kiota.http.jdk.JDKRequestAdapter;
 import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 public class QuarkusKiotaResourceTest {
