@@ -1,7 +1,7 @@
 # Quarkus - Kiota Extension
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Build](<https://img.shields.io/github/actions/workflow/status/quarkiverse/quarkus-kiota/build.yml?branch=main&logo=GitHub&style=flat-square>)](https://github.com/quarkiverse/quarkus-kiota/actions?query=workflow%3ABuild)
 [![Maven Central](https://img.shields.io/maven-central/v/io.quarkiverse.kiota/quarkus-kiota.svg?label=Maven%20Central&style=flat-square)](https://search.maven.org/artifact/io.quarkiverse.kiota/quarkus-kiota)
@@ -82,6 +82,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/andreaTP"><img src="https://avatars.githubusercontent.com/u/5792097?v=4?s=100" width="100px;" alt="Andrea Peruffo"/><br /><sub><b>Andrea Peruffo</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-kiota/commits?author=andreaTP" title="Code">💻</a> <a href="#maintenance-andreaTP" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://gastaldi.wordpress.com"><img src="https://avatars.githubusercontent.com/u/54133?v=4?s=100" width="100px;" alt="George Gastaldi"/><br /><sub><b>George Gastaldi</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-kiota/commits?author=gastaldi" title="Code">💻</a> <a href="#maintenance-gastaldi" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
