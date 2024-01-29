@@ -69,7 +69,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <quarkus.version>3.7.0</quarkus.version>
     <kiota.libs.version>0.12.1</kiota.libs.version>
-    <kiota-extra.libs.version>0.0.13</kiota-extra.libs.version>
+    <kiota-extra.libs.version>0.0.14</kiota-extra.libs.version>
   </properties>
   <dependencyManagement>
     <dependencies>
