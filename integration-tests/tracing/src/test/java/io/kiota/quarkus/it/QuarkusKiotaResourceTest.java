@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.junit.jupiter.api.AfterEach;
@@ -43,15 +44,25 @@ public class QuarkusKiotaResourceTest {
                 .body(is("{\"value\":\"Hello quarkus-kiota myself\"}"));
 
         await().atMost(Duration.ofSeconds(30)).until(() -> getSpans().size() > 0);
-        Map<String, Object> spanData = getSpans().stream().filter(span -> span.get("kind").equals("CLIENT")).findAny().get();
-        assertNotNull(spanData);
-        assertNotNull(spanData.get("spanId"));
+        Map<String, Object> clientSpanData = getSpans().stream().filter(span -> span.get("kind").equals("CLIENT")).findAny().get();
+        assertNotNull(clientSpanData);
+        assertNotNull(clientSpanData.get("spanId"));
 
-        Map<String, Object> attributes = (Map<String, Object>) spanData.get("attributes");
-        assertNotNull(attributes);
+        Map<String, Object> clientAttributes = (Map<String, Object>) clientSpanData.get("attributes");
+        assertNotNull(clientAttributes);
 
-        assertEquals("GET", attributes.get("http.method"));
-        assertEquals("http://localhost:8081/quarkus-kiota?name=myself", attributes.get("http.url"));
+        assertEquals("GET", clientAttributes.get("http.method"));
+        assertEquals("http://localhost:8081/quarkus-kiota?name=myself", clientAttributes.get("http.url"));
+
+        Map<String, Object> serverSpanData = getSpans().stream().filter(span -> span.get("kind").equals("SERVER")).findAny().get();
+        assertNotNull(serverSpanData);
+        assertNotNull(serverSpanData.get("spanId"));
+
+        Map<String, Object> serverAttributes = (Map<String, Object>) serverSpanData.get("attributes");
+        assertNotNull(serverAttributes);
+
+        assertTrue(serverAttributes.get("user_agent.original").toString().toLowerCase(Locale.ROOT).contains("vert.x-webclient"));
+        assertEquals("/quarkus-kiota?name=myself", serverAttributes.get("http.target"));
     }
 
 }
