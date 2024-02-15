@@ -42,7 +42,7 @@ public class QuarkusKiotaResourceTest {
                 .statusCode(200)
                 .body(is("{\"value\":\"Hello quarkus-kiota myself\"}"));
 
-        await().atMost(Duration.ofMinutes(2)).until(() -> getSpans().size() > 0);
+        await().atMost(Duration.ofSeconds(30)).until(() -> getSpans().size() > 0);
         Map<String, Object> spanData = getSpans().stream().filter(span -> span.get("kind").equals("CLIENT")).findAny().get();
         assertNotNull(spanData);
         assertNotNull(spanData.get("spanId"));
