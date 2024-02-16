@@ -10,7 +10,7 @@ h|[[quarkus-kiota_configuration]]link:#quarkus-kiota_configuration[Configuration
 h|Type
 h|Default
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.os]]`link:#quarkus-kiota_quarkus.kiota.os[quarkus.kiota.os]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-os]]`link:#quarkus-kiota_quarkus-kiota-os[quarkus.kiota.os]`
 
 
 [.description]
@@ -27,7 +27,7 @@ endif::add-copy-button-to-env-var[]
 |
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.arch]]`link:#quarkus-kiota_quarkus.kiota.arch[quarkus.kiota.arch]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-arch]]`link:#quarkus-kiota_quarkus-kiota-arch[quarkus.kiota.arch]`
 
 
 [.description]
@@ -44,7 +44,7 @@ endif::add-copy-button-to-env-var[]
 |
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.provided]]`link:#quarkus-kiota_quarkus.kiota.provided[quarkus.kiota.provided]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-provided]]`link:#quarkus-kiota_quarkus-kiota-provided[quarkus.kiota.provided]`
 
 
 [.description]
@@ -61,7 +61,7 @@ endif::add-copy-button-to-env-var[]
 |
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.release.url]]`link:#quarkus-kiota_quarkus.kiota.release.url[quarkus.kiota.release.url]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-release-url]]`link:#quarkus-kiota_quarkus-kiota-release-url[quarkus.kiota.release.url]`
 
 
 [.description]
@@ -78,7 +78,7 @@ endif::add-copy-button-to-env-var[]
 |`https://github.com/microsoft/kiota/releases`
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.version]]`link:#quarkus-kiota_quarkus.kiota.version[quarkus.kiota.version]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-version]]`link:#quarkus-kiota_quarkus-kiota-version[quarkus.kiota.version]`
 
 
 [.description]
@@ -95,7 +95,7 @@ endif::add-copy-button-to-env-var[]
 |
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.timeout]]`link:#quarkus-kiota_quarkus.kiota.timeout[quarkus.kiota.timeout]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-timeout]]`link:#quarkus-kiota_quarkus-kiota-timeout[quarkus.kiota.timeout]`
 
 
 [.description]
@@ -112,12 +112,12 @@ endif::add-copy-button-to-env-var[]
 |`30`
 
 
-h|[[quarkus-kiota_quarkus.kiota.spec-name-configuration-resolved-based-on-the-openapi-description-file-name]]link:#quarkus-kiota_quarkus.kiota.spec-name-configuration-resolved-based-on-the-openapi-description-file-name[Configuration resolved based on the OpenAPI description file name]
+h|[[quarkus-kiota_quarkus-kiota-spec-name-configuration-resolved-based-on-the-openapi-description-file-name]]link:#quarkus-kiota_quarkus-kiota-spec-name-configuration-resolved-based-on-the-openapi-description-file-name[Configuration resolved based on the OpenAPI description file name]
 This configuration section is optional
 h|Type
 h|Default
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.spec-name.class-name]]`link:#quarkus-kiota_quarkus.kiota.spec-name.class-name[quarkus.kiota.spec-name.class-name]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-spec-name-class-name]]`link:#quarkus-kiota_quarkus-kiota-spec-name-class-name[quarkus.kiota.spec-name.class-name]`
 
 
 [.description]
@@ -134,7 +134,7 @@ endif::add-copy-button-to-env-var[]
 |`ApiClient`
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.spec-name.package-name]]`link:#quarkus-kiota_quarkus.kiota.spec-name.package-name[quarkus.kiota.spec-name.package-name]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-spec-name-package-name]]`link:#quarkus-kiota_quarkus-kiota-spec-name-package-name[quarkus.kiota.spec-name.package-name]`
 
 
 [.description]
@@ -151,7 +151,7 @@ endif::add-copy-button-to-env-var[]
 |`io.apisdk`
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.spec-name.include-path]]`link:#quarkus-kiota_quarkus.kiota.spec-name.include-path[quarkus.kiota.spec-name.include-path]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-spec-name-include-path]]`link:#quarkus-kiota_quarkus-kiota-spec-name-include-path[quarkus.kiota.spec-name.include-path]`
 
 
 [.description]
@@ -168,7 +168,7 @@ endif::add-copy-button-to-env-var[]
 |
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.spec-name.exclude-path]]`link:#quarkus-kiota_quarkus.kiota.spec-name.exclude-path[quarkus.kiota.spec-name.exclude-path]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-spec-name-exclude-path]]`link:#quarkus-kiota_quarkus-kiota-spec-name-exclude-path[quarkus.kiota.spec-name.exclude-path]`
 
 
 [.description]
@@ -185,7 +185,7 @@ endif::add-copy-button-to-env-var[]
 |
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.spec-name.serializer]]`link:#quarkus-kiota_quarkus.kiota.spec-name.serializer[quarkus.kiota.spec-name.serializer]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-spec-name-serializer]]`link:#quarkus-kiota_quarkus-kiota-spec-name-serializer[quarkus.kiota.spec-name.serializer]`
 
 
 [.description]
@@ -202,7 +202,7 @@ endif::add-copy-button-to-env-var[]
 |
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus.kiota.spec-name.deserializer]]`link:#quarkus-kiota_quarkus.kiota.spec-name.deserializer[quarkus.kiota.spec-name.deserializer]`
+a|icon:lock[title=Fixed at build time] [[quarkus-kiota_quarkus-kiota-spec-name-deserializer]]`link:#quarkus-kiota_quarkus-kiota-spec-name-deserializer[quarkus.kiota.spec-name.deserializer]`
 
 
 [.description]

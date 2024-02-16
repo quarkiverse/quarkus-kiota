@@ -62,6 +62,7 @@
         <module>auth-vertx</module>
         <module>rename</module>
         <module>native-image</module>
+        <module>tracing</module>
       </modules>
     </profile>
     <profile>
