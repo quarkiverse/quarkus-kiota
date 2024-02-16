@@ -43,7 +43,7 @@ public class QuarkusKiotaResourceTest {
                 .statusCode(200)
                 .body(is("{\"value\":\"Hello quarkus-kiota myself\"}"));
 
-        await().atMost(Duration.ofSeconds(30)).until(() -> getSpans().size() > 0);
+        await().atMost(Duration.ofSeconds(30)).until(() -> getSpans().size() > 2);
         Map<String, Object> clientSpanData = getSpans().stream().filter(span -> span.get("kind").equals("CLIENT")).findAny().get();
         assertNotNull(clientSpanData);
         assertNotNull(clientSpanData.get("spanId"));
@@ -63,6 +63,8 @@ public class QuarkusKiotaResourceTest {
 
         assertTrue(serverAttributes.get("user_agent.original").toString().toLowerCase(Locale.ROOT).contains("vert.x-webclient"));
         assertEquals("/quarkus-kiota?name=myself", serverAttributes.get("http.target"));
+
+        assertEquals(serverSpanData.get("parentSpanId"), clientSpanData.get("spanId"));
     }
 
 }
