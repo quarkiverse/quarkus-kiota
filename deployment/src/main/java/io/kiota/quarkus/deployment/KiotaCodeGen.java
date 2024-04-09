@@ -336,8 +336,8 @@ public abstract class KiotaCodeGen implements CodeGenProvider {
                 architecture = "arm64";
             } else {
                 throw new CodeGenException(
-                        "Unsupported architecture, please specify a supported architecture using"
-                                + " properties.");
+                        "Unsupported architecture:" + architecture
+                                + " , please specify a supported architecture using properties.");
             }
             switch (osName) {
                 case LINUX:
@@ -348,8 +348,7 @@ public abstract class KiotaCodeGen implements CodeGenProvider {
                     return "osx-" + architecture;
                 default:
                     throw new CodeGenException(
-                            "Unsupported architecture, please specify a supported os using"
-                                    + " properties.");
+                            "Unsupported OS: " + osName + ", please specify a supported os using properties.");
             }
         }
 
