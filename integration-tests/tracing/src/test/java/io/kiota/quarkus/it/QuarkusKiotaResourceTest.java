@@ -44,7 +44,8 @@ public class QuarkusKiotaResourceTest {
                 .body(is("{\"value\":\"Hello quarkus-kiota myself\"}"));
 
         await().atMost(Duration.ofSeconds(30)).until(() -> getSpans().size() > 2);
-        Map<String, Object> clientSpanData = getSpans().stream().filter(span -> span.get("kind").equals("CLIENT")).findAny().get();
+        Map<String, Object> clientSpanData = getSpans().stream().filter(span -> span.get("kind").equals("CLIENT")).findAny()
+                .get();
         assertNotNull(clientSpanData);
         assertNotNull(clientSpanData.get("spanId"));
 
@@ -54,14 +55,16 @@ public class QuarkusKiotaResourceTest {
         assertEquals("GET", clientAttributes.get("http.method"));
         assertEquals("http://localhost:8081/quarkus-kiota?name=myself", clientAttributes.get("http.url"));
 
-        Map<String, Object> serverSpanData = getSpans().stream().filter(span -> span.get("kind").equals("SERVER")).findAny().get();
+        Map<String, Object> serverSpanData = getSpans().stream().filter(span -> span.get("kind").equals("SERVER")).findAny()
+                .get();
         assertNotNull(serverSpanData);
         assertNotNull(serverSpanData.get("spanId"));
 
         Map<String, Object> serverAttributes = (Map<String, Object>) serverSpanData.get("attributes");
         assertNotNull(serverAttributes);
 
-        assertTrue(serverAttributes.get("user_agent.original").toString().toLowerCase(Locale.ROOT).contains("vert.x-webclient"));
+        assertTrue(
+                serverAttributes.get("user_agent.original").toString().toLowerCase(Locale.ROOT).contains("vert.x-webclient"));
         assertEquals("/quarkus-kiota?name=myself", serverAttributes.get("http.target"));
 
         assertEquals(serverSpanData.get("parentSpanId"), clientSpanData.get("spanId"));
