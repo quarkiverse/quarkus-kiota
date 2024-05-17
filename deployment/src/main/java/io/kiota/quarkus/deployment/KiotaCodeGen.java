@@ -249,7 +249,7 @@ public abstract class KiotaCodeGen implements CodeGenProvider {
         }
 
         String excludePath = KiotaCodeGenConfig.getExcludePath(config, openApiSpec.toFile().getName());
-        if (includePath != null) {
+        if (excludePath != null) {
             cmd.add("--exclude-path");
             cmd.add(excludePath);
         }
