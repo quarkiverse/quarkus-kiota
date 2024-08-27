@@ -52,8 +52,8 @@ public class QuarkusKiotaResourceTest {
         Map<String, Object> clientAttributes = (Map<String, Object>) clientSpanData.get("attributes");
         assertNotNull(clientAttributes);
 
-        assertEquals("GET", clientAttributes.get("http.method"));
-        assertEquals("http://localhost:8081/quarkus-kiota?name=myself", clientAttributes.get("http.url"));
+        assertEquals("GET", clientAttributes.get("http.request.method"));
+        assertEquals("http://localhost:8081/quarkus-kiota?name=myself", clientAttributes.get("url.full"));
 
         Map<String, Object> serverSpanData = getSpans().stream().filter(span -> span.get("kind").equals("SERVER")).findAny()
                 .get();
@@ -65,7 +65,8 @@ public class QuarkusKiotaResourceTest {
 
         assertTrue(
                 serverAttributes.get("user_agent.original").toString().toLowerCase(Locale.ROOT).contains("vert.x-webclient"));
-        assertEquals("/quarkus-kiota?name=myself", serverAttributes.get("http.target"));
+        assertEquals("/quarkus-kiota", serverAttributes.get("url.path"));
+        assertEquals("name=myself", serverAttributes.get("url.query"));
 
         assertEquals(serverSpanData.get("parentSpanId"), clientSpanData.get("spanId"));
     }
