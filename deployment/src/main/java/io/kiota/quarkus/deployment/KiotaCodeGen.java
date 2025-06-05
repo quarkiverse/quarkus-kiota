@@ -332,7 +332,7 @@ public abstract class KiotaCodeGen implements CodeGenProvider {
             String architecture = osArch;
             if (architecture.equals("x86_64")) {
                 architecture = "x64";
-            } else if (architecture.equals("aarch64")) {
+            } else if (architecture.equals("aarch_64")) {
                 architecture = "arm64";
             } else {
                 throw new CodeGenException(
