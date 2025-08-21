@@ -30,7 +30,8 @@ import io.quarkus.bootstrap.prebuild.CodeGenException;
 import io.quarkus.deployment.CodeGenContext;
 import io.quarkus.deployment.CodeGenProvider;
 import io.quarkus.logging.Log;
-import io.quarkus.utilities.OS;
+import io.smallrye.common.cpu.CPU;
+import io.smallrye.common.os.OS;
 
 /**
  * Code generation for Kiota. Generates java classes from OpenAPI files placed in either src/main/openapi or src/test/openapi
@@ -136,7 +137,7 @@ public abstract class KiotaCodeGen implements CodeGenProvider {
 
             executable = destFolder.resolve(classifier.binaryName()).toFile().getAbsolutePath();
         } else {
-            if (OS.determineOS() == OS.WINDOWS && !executable.endsWith(EXE)) {
+            if (OS.current() == OS.WINDOWS && !executable.endsWith(EXE)) {
                 executable = executable + "." + EXE;
             }
         }
@@ -330,13 +331,17 @@ public abstract class KiotaCodeGen implements CodeGenProvider {
 
         public String downloadArtifactName() throws CodeGenException {
             String architecture = osArch;
-            if (architecture.equals("x86_64")) {
+            if (CPU.x64.name().equals(architecture) ||
+                    CPU.x64.aliases().contains(architecture) ||
+                    CPU.x86.name().equals(architecture) ||
+                    CPU.x86.aliases().contains(architecture)) {
                 architecture = "x64";
-            } else if (architecture.equals("aarch_64")) {
+            } else if (CPU.aarch64.name().equals(architecture) ||
+                    CPU.aarch64.aliases().contains(architecture)) {
                 architecture = "arm64";
             } else {
                 throw new CodeGenException(
-                        "Unsupported architecture:" + architecture
+                        "Unsupported architecture: " + architecture
                                 + " , please specify a supported architecture using properties.");
             }
             switch (osName) {
@@ -353,7 +358,7 @@ public abstract class KiotaCodeGen implements CodeGenProvider {
         }
 
         public String binaryName() {
-            switch (OS.determineOS()) {
+            switch (OS.current()) {
                 case WINDOWS:
                     return KIOTA + "." + EXE;
                 default:

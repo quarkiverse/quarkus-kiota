@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.quarkus.logging.Log;
+import io.smallrye.common.os.OS;
 
 public class KiotaCodeGenConfig {
     static final String KIOTA_CONFIG_PREFIX = "quarkus.kiota";
@@ -53,18 +54,18 @@ public class KiotaCodeGenConfig {
             "com.microsoft.kiota.serialization.FormParseNodeFactory");
     private static final String DESERIALIZER = ".deserializer";
 
-    public static io.quarkus.utilities.OS getOs(final Config config) {
+    public static OS getOs(final Config config) {
         String os = config.getConfigValue(OS).getValue();
         if (os == null) {
-            return io.quarkus.utilities.OS.determineOS();
+            return io.smallrye.common.os.OS.current();
         }
-        return io.quarkus.utilities.OS.valueOf(os);
+        return io.smallrye.common.os.OS.valueOf(os);
     }
 
     public static String getArch(final Config config) {
         String arch = config.getConfigValue(ARCH).getValue();
         if (arch == null) {
-            return io.quarkus.utilities.OS.getArchitecture();
+            return io.smallrye.common.cpu.CPU.host().name();
         }
         return arch;
     }
