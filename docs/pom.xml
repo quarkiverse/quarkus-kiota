@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.quarkiverse.kiota</groupId>
     <artifactId>quarkus-kiota-parent</artifactId>
-    <version>0.0.7</version>
+    <version>999-SNAPSHOT</version>
   </parent>
   <artifactId>quarkus-kiota-docs</artifactId>
   <name>Quarkus Kiota - Documentation</name>
