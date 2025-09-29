@@ -9,7 +9,7 @@
 
   <groupId>io.quarkiverse.kiota</groupId>
   <artifactId>quarkus-kiota-parent</artifactId>
-  <version>0.0.8</version>
+  <version>999-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Quarkus Kiota Extension</name>
@@ -45,7 +45,7 @@
   <scm>
     <connection>scm:git:git@github.com:quarkiverse/quarkus-kiota.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-kiota.git</developerConnection>
-    <tag>0.0.8</tag>
+    <tag>HEAD</tag>
     <url>https://github.com/quarkiverse/quarkus-kiota</url>
   </scm>
 
