@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.quarkiverse</groupId>
@@ -15,6 +16,10 @@
   <name>Quarkus Kiota Extension</name>
   <description>A Quarkus Extension to generate code with Kiota</description>
   <url>https://github.com/quarkiverse/quarkus-kiota</url>
+  <modules>
+    <module>deployment</module>
+    <module>runtime</module>
+  </modules>
 
   <organization>
     <name>Kiota Community</name>
@@ -46,19 +51,6 @@
   </scm>
 
   <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.release>11</maven.compiler.release>
-    <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
-    <maven-invoker-plugin.version>3.6.0</maven-invoker-plugin.version>
-    <maven-failsafe-plugin.version>3.5.4</maven-failsafe-plugin.version>
-    <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
-    <maven-plugin-plugin.version>3.11.0</maven-plugin-plugin.version>
-    <versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
-    <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
-    <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
-    <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <quarkus.version>3.28.0</quarkus.version>
     <kiota.libs.version>1.8.10</kiota.libs.version>
     <kiota-extra.libs.version>0.0.29</kiota-extra.libs.version>
@@ -85,7 +77,6 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>${maven-surefire-plugin.version}</version>
           <configuration>
             <systemPropertyVariables>
               <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
@@ -96,7 +87,6 @@
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>${maven-failsafe-plugin.version}</version>
           <configuration>
             <systemPropertyVariables>
               <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
@@ -105,59 +95,33 @@
             </systemPropertyVariables>
           </configuration>
         </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>${maven-compiler-plugin.version}</version>
-          <configuration>
-            <compilerArgs>
-              <arg>-parameters</arg>
-            </compilerArgs>
-          </configuration>
-        </plugin>
       </plugins>
     </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${maven-javadoc-plugin.version}</version>
-        <configuration>
-          <doclint>none</doclint>
-          <source>1.8</source>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
   </build>
-
   <profiles>
     <profile>
-      <id>non-release</id>
+      <id>docs</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
+        <property>
+          <name>performRelease</name>
+          <value>!true</value>
+        </property>
       </activation>
       <modules>
-        <module>deployment</module>
-        <module>runtime</module>
-        <module>integration-tests</module>
         <module>docs</module>
       </modules>
     </profile>
     <profile>
-      <id>release</id>
+      <id>it</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>!true</value>
+        </property>
+      </activation>
       <modules>
-        <module>deployment</module>
-        <module>runtime</module>
-        <module>docs</module>
+        <module>integration-tests</module>
       </modules>
     </profile>
   </profiles>
-
 </project>
