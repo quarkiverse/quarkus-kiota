@@ -51,7 +51,7 @@
 
   <properties>
     <quarkus.version>3.30.0</quarkus.version>
-    <kiota.libs.version>1.8.10</kiota.libs.version>
+    <kiota.libs.version>1.9.0</kiota.libs.version>
     <kiota-extra.libs.version>0.0.31</kiota-extra.libs.version>
   </properties>
   <dependencyManagement>
