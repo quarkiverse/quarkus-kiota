@@ -3,3 +3,6 @@ title: Kiota
 version: dev
 nav:
   - modules/ROOT/nav.adoc
+asciidoc:
+  attributes:
+    version: latest
