@@ -50,7 +50,7 @@
   </scm>
 
   <properties>
-    <quarkus.version>3.35.2</quarkus.version>
+    <quarkus.version>3.38.1</quarkus.version>
     <kiota.libs.version>1.9.3</kiota.libs.version>
     <kiota-extra.libs.version>0.0.35</kiota-extra.libs.version>
   </properties>
